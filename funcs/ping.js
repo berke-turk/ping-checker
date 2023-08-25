@@ -3,34 +3,39 @@ const superagent = require('superagent');
 
 /**
  * @param {string} host 
- * @param {number} port 
  * @param {string} method 
+ * @param {string} show_body
  * @param {number} delay_second 
  */
-module.exports = async function (host, port, method, delay_second) {
+module.exports = async function (host, method, show_body, delay_second) {
     while (true) {
-        console.log("Ping: " + host + ':' + port + ' ' + method.toLocaleUpperCase() + ' - (Time) ' + new Date().toLocaleTimeString());
+        console.log("Ping: " + host + ' ' + method.toLocaleUpperCase() + ' - (Time) ' + new Date().toLocaleTimeString());
 
         // Send Http Request
-        let result =
-            method == "get" ?
-                await superagent.get(
-                    host + ':' + port)
-                    .send() :
-                method == "post" ?
-                    await superagent.post(
-                        host + ':' + port)
-                        .send({}) :
-                    method == "put" ?
-                        await superagent.put(
-                            host + ':' + port)
+        try {
+            let { body } =
+                method == "get" ?
+                    await superagent.get(
+                        host)
+                        .send() :
+                    method == "post" ?
+                        await superagent.post(
+                            host)
                             .send({}) :
-                        method == "delete" ?
-                            await superagent.delete(
-                                host + ':' + port)
-                                .send({}) : null;
-
-        console.log((result));
+                        method == "put" ?
+                            await superagent.put(
+                                host)
+                                .send({}) :
+                            method == "delete" ?
+                                await superagent.delete(
+                                    host)
+                                    .send({}) : null;
+            if (show_body == "true")
+                console.log(body);
+        } catch (error) {
+            console.log(error);
+            console.log("error request...");
+        }
 
         await Time.delay(1000 * delay_second);
     }
