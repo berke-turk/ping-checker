@@ -13,7 +13,7 @@ module.exports = async function (host, method, show_body, delay_second) {
 
         // Send Http Request
         try {
-            let { body } =
+            let response =
                 method == "get" ?
                     await superagent.get(
                         host)
@@ -31,7 +31,9 @@ module.exports = async function (host, method, show_body, delay_second) {
                                     host)
                                     .send({}) : null;
             if (show_body == "true")
-                console.log(body);
+                console.log(response.body);
+
+            console.log("<-----Response-----> Status: " + response.status);
         } catch (error) {
             console.log(error);
             console.log("error request...");

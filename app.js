@@ -2,7 +2,7 @@ const consoleTitle = require('node-bash-title');
 const superagent = require('superagent');
 
 // Example Log
-const example = "\n|example|\n-> node app.js --host 127.0.0.1 --delay 1 --method get|post|put|delete";
+const example = "\n|example|\n-> node app.js --host 127.0.0.1|http://google.com --delay 1 --method get|post|put|delete";
 
 // Variables
 var request_host = "";
