@@ -33,12 +33,12 @@ if (request_host == "") {
 }
 
 // Show Datas
-console.log("Starting ping in....");
+console.log("Starting ping in.... 5 second later");
 console.log("Host: " + request_host);
 console.log("Delay: " + request_delay + "s");
 console.log("Method: " + request_method);
 console.log("Show Response Body: " + request_show_body);
-console.log("Request Amount: " + request_amount);
+console.log("Request Amount: " + (request_amount == 0 ? 'unlimited' : request_amount));
 
 // Start Ping
 Funcs.Ping(request_host, request_method, request_show_body, request_amount, request_delay);
