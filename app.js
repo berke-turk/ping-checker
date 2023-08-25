@@ -2,7 +2,7 @@ const consoleTitle = require('node-bash-title');
 const superagent = require('superagent');
 
 // Example Log
-const example = "\n|example|\n-> node app.js --host 127.0.0.1|http://google.com --delay 1 --method get|post|put|delete";
+const example = "\n|example|\n-> node app.js --host 127.0.0.1|http://google.com --delay 1 --method get|post|put|delete --amount 0(unlimited)|5|100";
 
 // Variables
 var request_host = "";
@@ -36,7 +36,7 @@ if (request_host == "") {
 console.log("Starting ping in.... 5 second later");
 console.log("Host: " + request_host);
 console.log("Delay: " + request_delay + "s");
-console.log("Method: " + request_method);
+console.log("Method: " + request_method.toLocaleUpperCase("TR"));
 console.log("Show Response Body: " + request_show_body);
 console.log("Request Amount: " + (request_amount == 0 ? 'unlimited' : request_amount));
 
