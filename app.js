@@ -1,87 +1,43 @@
 const consoleTitle = require('node-bash-title');
+const superagent = require('superagent');
+
+// Example Log
+const example = "\n|example|\n-> node app.js --host 127.0.0.1 --port 80 --delay 1 --method get|post|put|delete";
 
 // Variables
 var request_host = "";
 var request_port = 80;
 var request_delay = 0;
+var request_method = "";
+
+// Functions
 const Funcs = {
-    Time: require('./funcs/time')
+    ProcessArgvs: require('./funcs/process_argv'),
+    Ping: require('./funcs/ping')
 };
 
-request_host = read_argv('--host');
-request_port = read_argv_int('--port');
-request_delay = read_argv_number('--delay');
-
-console.log(request_host);
-console.log(request_port);
-console.log(request_delay);
+// Read With Process Argv
+request_host = Funcs.ProcessArgvs.read_argv('--host');
+request_port = Funcs.ProcessArgvs.read_argv_int('--port');
+request_delay = Funcs.ProcessArgvs.read_argv_number('--delay');
+request_method = Funcs.ProcessArgvs.read_argv('--method').toLowerCase();
 
 if (request_host == "") {
-    console.log("request ip is null");
+    console.log("host ?" + example);
+    return;
+} else if (request_method != "get" && request_method != "post" && request_method != "put" && request_method != "delete") {
+    console.log("method ?" + example);
     return;
 }
 
-ping(request_host, request_port, request_delay);
+// Show Datas
+console.log("Starting ping in....");
+console.log("Host: " + request_host + ":" + request_port);
+console.log("Delay: " + request_delay + "s");
+console.log("Method: " + request_method);
 
-async function ping(host, port, delay_second) {
-    while (true) {
-        console.log("Ping: " + host + ':' + port + ' - (Time) ' + Date.now());
-        await Funcs.Time.delay(1000 * delay_second);
-    }
-}
+// Start Ping
+Funcs.Ping(request_host, request_port, request_method, request_delay);
 
+// Console Title
 consoleTitle("Ping Checker");
-
-/**
- * @param {string} key
- * @returns {string} value 
- */
-function read_argv(key) {
-    try {
-        // Service Request Argv
-        for (let i = 0; i < process.argv.length; i++) {
-            if (process.argv[i] == key)
-                if (process.argv.length >= i)
-                    return process.argv[i + 1];
-        }
-        return "";
-    } catch (error) {
-        return "";
-    }
-}
-
-/**
- * @param {string} key
- * @returns {number} value 
- */
-function read_argv_int(key) {
-    // Service Request Argv
-    try {
-        for (let i = 0; i < process.argv.length; i++) {
-            if (process.argv[i] == key)
-                if (process.argv.length >= i)
-                    return parseInt(process.argv[i + 1]);
-        }
-        return 1;
-    } catch (error) {
-        return 1;
-    }
-}
-
-/**
- * @param {string} key
- * @returns {number} value 
- */
-function read_argv_number(key) {
-    // Service Request Argv
-    try {
-        for (let i = 0; i < process.argv.length; i++) {
-            if (process.argv[i] == key)
-                if (process.argv.length >= i)
-                    return parseFloat(process.argv[i + 1]);
-        }
-        return 1;
-    } catch (error) {
-        return 1;
-    }
-}
