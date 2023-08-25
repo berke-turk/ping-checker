@@ -28,9 +28,9 @@ exports.read_argv_int = function (key) {
                 if (process.argv.length >= i)
                     return parseInt(process.argv[i + 1]);
         }
-        return 80;
+        return 0;
     } catch (error) {
-        return 80;
+        return 0;
     }
 }
 

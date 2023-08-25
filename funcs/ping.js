@@ -6,9 +6,11 @@ const superagent = require('superagent');
  * @param {string} method 
  * @param {string} show_body
  * @param {number} delay_second 
+ * @param {number} amount 
  */
-module.exports = async function (host, method, show_body, delay_second) {
-    while (true) {
+module.exports = async function (host, method, show_body, delay_second, amount) {
+    let count = 0;
+    while (count <= amount) {
         console.log("Ping: " + host + ' ' + method.toLocaleUpperCase() + ' - (Time) ' + new Date().toLocaleTimeString());
 
         // Send Http Request
@@ -38,7 +40,7 @@ module.exports = async function (host, method, show_body, delay_second) {
             console.log(error);
             console.log("error request...");
         }
-
+        count = amount != 0 ? count + 1 : 0;
         await Time.delay(1000 * delay_second);
     }
 }

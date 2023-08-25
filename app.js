@@ -9,6 +9,7 @@ var request_host = "";
 var request_delay = 0;
 var request_method = "";
 var request_show_body = "false";
+var request_amount = 0;
 
 // Functions
 const Funcs = {
@@ -18,6 +19,7 @@ const Funcs = {
 
 // Read With Process Argv
 request_host = Funcs.ProcessArgvs.read_argv('--host');
+request_amount = Funcs.ProcessArgvs.read_argv_int('--amount');
 request_delay = Funcs.ProcessArgvs.read_argv_number('--delay');
 request_method = Funcs.ProcessArgvs.read_argv('--method').toLowerCase();
 request_show_body = Funcs.ProcessArgvs.read_argv('--response').toLowerCase();
@@ -36,9 +38,10 @@ console.log("Host: " + request_host);
 console.log("Delay: " + request_delay + "s");
 console.log("Method: " + request_method);
 console.log("Show Response Body: " + request_show_body);
+console.log("Request Amount: " + request_amount);
 
 // Start Ping
-Funcs.Ping(request_host, request_method, request_show_body, request_delay);
+Funcs.Ping(request_host, request_method, request_show_body, request_amount, request_delay);
 
 // Console Title
 consoleTitle("Ping Checker");
