@@ -21,9 +21,7 @@ if (request_host == "") {
     return;
 }
 
-while (condition) {
-    // Ping
-}
+ping(request_host, request_port, request_delay);
 
 async function ping(host, port, delay_second) {
     while (true) {
@@ -31,6 +29,7 @@ async function ping(host, port, delay_second) {
         await Funcs.Time.delay(1000 * delay_second);
     }
 }
+
 consoleTitle("Ping Checker");
 
 /**
