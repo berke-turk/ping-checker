@@ -74,4 +74,4 @@ Attention:
 
 ## Authors
 
-* *Backend Developer* - [Berke Türk](https://github.com/berke-turk)
+* [Berke Türk](https://github.com/berke-turk) - *Backend Developer*
