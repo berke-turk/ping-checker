@@ -39,14 +39,7 @@
 
 I have created a useful package to periodically check whether your own APIs, web services are running or the response they return. And I will develop this project to print custom 404 status logs at intervals you specify. These improvements will be included in future releases.
 
-## Built With
-
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
 ## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
 
 ### Installation
 
