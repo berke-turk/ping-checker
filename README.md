@@ -68,7 +68,7 @@ node app.js --info on
 ## Usage
 
 Attention:
-```--host``` value must be ip:port or domain (required)
+```--host``` value must be ip:port or domain (required)\n
 ```--method``` value must be get or post or put or delete (required)
 ```--amount``` throws unlimited requests if sent as '0' (optional, default: unlimited)
 ```--delay``` value must be sent in seconds, satisfying the "0.1 <= --delay" condition (optional, default: 1)
