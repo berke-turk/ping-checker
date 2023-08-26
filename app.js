@@ -1,6 +1,12 @@
 const consoleTitle = require('node-bash-title');
 const superagent = require('superagent');
 
+// Functions
+const Funcs = {
+    ProcessArgvs: require('./funcs/process_argv'),
+    Ping: require('./funcs/ping')
+};
+
 // Example Log
 const example = "\n|example|\n-> node app.js --host 127.0.0.1|http://google.com --delay 1 --method get|post|put|delete --amount 0(unlimited)|5|100";
 if (Funcs.ProcessArgvs.read_argv('--example') == "on") {
@@ -13,12 +19,6 @@ var request_delay = 0;
 var request_method = "";
 var request_show_body = "false";
 var request_amount = 0;
-
-// Functions
-const Funcs = {
-    ProcessArgvs: require('./funcs/process_argv'),
-    Ping: require('./funcs/ping')
-};
 
 // Read With Process Argv
 request_host = Funcs.ProcessArgvs.read_argv('--host');
