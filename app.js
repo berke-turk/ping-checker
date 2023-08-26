@@ -3,6 +3,9 @@ const superagent = require('superagent');
 
 // Example Log
 const example = "\n|example|\n-> node app.js --host 127.0.0.1|http://google.com --delay 1 --method get|post|put|delete --amount 0(unlimited)|5|100";
+if (Funcs.ProcessArgvs.read_argv('--example') == "on") {
+    console.log(example); return;
+}
 
 // Variables
 var request_host = "";
