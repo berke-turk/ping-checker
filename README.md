@@ -81,10 +81,6 @@ Attention:
 ```--delay``` value must be sent in seconds, satisfying the "0.1 <= --delay" condition (optional, default: 1)
 ```--response``` value must be true or false (optional, default: false)
 
-### Creating A Pull Request
-
-
-
 ## Authors
 
 * **Berke Türk** - *Backend Developer* - [Berke Türk](https://github.com/berke-turk) - *Project Manager"
